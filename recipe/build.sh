@@ -12,5 +12,7 @@ chmod +x configure
     --libdir="$PREFIX/lib"
 
 make
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
 make check
+fi
 make install

@@ -11,7 +11,7 @@ source:
   sha256: 7353dd18eae0f9c58ef405894a8987b1385012e60fea3d4aef2ebfccbacd97e7
 
 build:
-  number: 1000
+  number: 1001
   skip: true  # [win]
 
 requirements:
@@ -31,7 +31,7 @@ test:
 
 about:
   home: https://github.com/sagemath/FlintQS
-  license: GPLv2+
+  license: GPL-2.0-or-later
   license_file: COPYING
   summary: William Hart's GPL'd Highly optimized multi-polynomial quadratic sieve for integer factorization
   dev_url: https://github.com/sagemath/FlintQS

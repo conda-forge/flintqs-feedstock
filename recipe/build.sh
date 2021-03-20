@@ -1,9 +1,9 @@
 #!/bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.guess config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.sub config.sub
 
-export CPPFLAGS="-I$PREFIX/include"
-export LDFLAGS="-L$PREFIX/lib $LDFLAGS"
-export LD_LIBRARY_PATH="$PREFIX/lib:$LD_LIBRARY_PATH"
-export CXXFLAGS="-g -fomit-frame-pointer -O3 -Wno-sign-compare -Wno-write-strings $CXXFLAGS"
+export CXXFLAGS="-g $CXXFLAGS"
 
 chmod +x configure
 
@@ -11,6 +11,8 @@ chmod +x configure
     --prefix="$PREFIX" \
     --libdir="$PREFIX/lib"
 
-make
-make check
+make -j${CPU_COUNT}
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
+  make check
+fi
 make install
